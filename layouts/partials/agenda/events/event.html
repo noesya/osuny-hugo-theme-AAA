@@ -1,0 +1,90 @@
+{{ $event := .event }}
+{{ $layout := .layout | default "list" }}
+{{ $heading := .heading | default "h2" }}
+{{ $heading_tag := (dict 
+    "open" ((printf "<%s itemprop='name' class='event-title'>" $heading) | safeHTML)
+    "close" ((printf "</%s>" $heading) | safeHTML)
+    ) }}
+{{ $index := .index }}
+{{ $alternate := .alternate }}
+{{ $options := .options }}
+
+{{ with $event }}
+  {{ $class := "event" }}
+  {{ if .Params.image }}
+    {{ $class = printf "%s event--with-image" $class }}
+  {{ end -}}
+  {{ if .Params.children }}
+    {{ $class = printf "%s event--parent" $class }}
+  {{ end -}}
+  {{ if .Params.parent }}
+    {{ $class = printf "%s event--child" $class }}
+  {{ end -}}
+
+  <article class="{{ $class }}" itemscope itemtype="https://schema.org/Event">
+    <div class="event-content">
+      {{- $title := partial "PrepareHTML" .Title -}}
+      {{ if and $options.subtitle .Params.subtitle }}
+        <hgroup>
+      {{ end }}
+      {{ $heading_tag.open }}
+        <a href="{{ .Permalink }}" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">{{ $title }}</a>
+      {{ $heading_tag.close }}
+      {{ if and $options.subtitle .Params.subtitle }}
+          <p class="event-subtitle">{{ partial "PrepareText" .Params.subtitle }}</p>
+        </hgroup>
+      {{ end }}
+
+      {{ $dates := .Params.dates }}
+      {{ if $options.dates }}
+        {{ partial "agenda/events/event-schedule" (dict 
+            "dates" $dates
+            "layout" $layout 
+          )}}
+      {{ end }}
+
+      {{ if and $dates.status $options.status }}
+        <p class="event-status">
+          {{ if eq $dates.status "current"}}
+            {{- i18n "blocks.events.current" -}}
+          {{ else if eq $dates.status "future" }}
+            {{- i18n "blocks.events.future" -}}
+          {{ else if eq $dates.status "archive" }}
+            {{- i18n "blocks.events.archive" -}}
+          {{ end }}
+        </p>
+      {{ end }}
+
+      {{ if and $options.summary  .Params.summary }}
+        <div class="event-description" itemprop="description">
+          {{ partial "GetRichSummary" ( dict 
+            "summary" .Params.summary
+            "kind" "events"
+          )}}
+          {{ if eq $layout "large" }}
+            <p class="more meta" aria-hidden="true">{{- i18n "commons.more" -}}</p>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ if $options.categories }}
+        {{ partial "commons/categories" ( dict
+          "context" .
+          "kind" "event"
+        )}}
+      {{- end -}}
+    </div>
+
+    <div class="media">
+      {{- if and $options.image .Params.image -}}
+        {{- partial "commons/image.html"
+            (dict
+              "image"    .Params.image
+              "sizes"    site.Params.image_sizes.sections.events.item
+            ) -}}
+      {{- else -}}
+        {{- partial "commons/image-default.html" "events" -}}
+      {{- end -}}
+    </div>
+  </article>
+{{ end }}

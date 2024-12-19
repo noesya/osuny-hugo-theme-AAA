@@ -4,16 +4,16 @@ ignoreLogs: ['warning-goldmark-raw-html']
 pagination:
   pagerSize: 36
 params:
+
+
+################
+# Design system
+################
+  breadcrumb:
+    position: hero-start #  hero-start |  hero-end | after-hero | none
   debug:
     active: false
     productionUrl: ""
-  keycdn: https://osuny-1b4da.kxcdn.com
-  plausible: false
-  seo:
-    title:
-      separator: "|"
-
-  # DESIGN SYSTEM
   logo:
     header: "/assets/images/logo.svg"
     footer: "/assets/images/logo.svg"
@@ -49,22 +49,19 @@ params:
           truncate: 125
     i18n:
       display: true
-  breadcrumb:
-    position: hero-start #  hero-start |  hero-end | after-hero | none
-  summary:
-    position: hero # hero | content
+  keycdn: https://osuny-1b4da.kxcdn.com
+  plausible: false
+  seo:
+    title:
+      separator: "|"
   search:
     active: false
     position: primary # primary | upper-menu | fixed | footer
     appearance: icon # icon | text | both
-  home:
-    head:
-      title: both # both | page | site
-    toc:
-      disabled: true
+  summary:
+    position: hero # hero | content
   toc:
     force_offcanvas: false
-
   # Enabled network for share action
   # You can also specify this options for each sharable Section
   share_links:
@@ -77,34 +74,50 @@ params:
     twitter: false
     whatsapp: false
 
-  # SECTIONS
+################
+# Sections
+################
+  agenda:
+    events:
+      default_image: false
+      date_format: false # You can add date format to override the date from static (two_lines) 
+      time_format: false # You can add time format to override the time from static (from.hour & to.hour)
+      index:
+        group_by_date: "Monday 2 January 2006"
+        highlight_exhibitions: true
+        layout: list # grid | list
+        per_page: 10
+        truncate_description: 200 # Set to 0 to disable truncate
+        options:
+          dates: true
+          categories: false
+          image: true
+          status: false
+          subtitle: true
+          summary: true
+      # share_links: # Optional
+      #   enabled: true
+      #   email: false
+      #   facebook: true
+      #   linkedin: true
+      #   mastodon: false
+      #   telegram: false
+      #   twitter: true
+      #   whatsapp: false
+    exhibitions:
+      default_image: false
+      date_format: false # You can add date format to override the date from static (two_lines) 
+      time_format: false # You can add time format to override the time from static (from.hour & to.hour)
+
   diplomas:
     single:
       programs:
         options: false # You can set options for programs layout (see programs.index.options)
-  events:
-    default_image: false
-    date_format: false # You can add date format to override the date from static (two_lines) 
-    time_format: false # You can add time format to override the time from static (from.hour & to.hour)
-    index:
-      truncate_description: 200 # Set to 0 to disable truncate
-      layout: list # grid | list
-      options:
-        dates: true
-        categories: false
-        image: true
-        status: false
-        subtitle: true
-        summary: true
-    # share_links: # Optional
-    #   enabled: true
-    #   email: false
-    #   facebook: true
-    #   linkedin: true
-    #   mastodon: false
-    #   telegram: false
-    #   twitter: true
-    #   whatsapp: false
+  home:
+    head:
+      title: both # both | page | site
+    toc:
+      disabled: true
   organizations:
     dark_logo_background: false
     map_marker_icon: '/assets/images/map-marker.svg'
@@ -240,7 +253,10 @@ params:
   volumes:
     default_image: false
 
-  # BLOCKS
+
+################
+# Blocks
+################
   blocks:
     gallery:
       slider:
@@ -263,6 +279,11 @@ params:
       slider:
         arrows: true
         progression: true
+
+
+################
+# Image sizes
+################
   image_sizes:
     design_system:
       lightbox:

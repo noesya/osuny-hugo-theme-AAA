@@ -1,5 +1,4 @@
 .block
-    --block-space-y: #{$block-space-y}
     margin-top: var(--block-space-y)
     margin-bottom: var(--block-space-y)
     .block-title
@@ -12,12 +11,9 @@
         .block-title.sr-only + .description
             margin-top: 0
     @include in-page-without-sidebar
-        --block-space-y: #{$block-space-y-desktop}
         .top
             .description
                 max-width: columns(8)
-    @include in-page-with-sidebar
-        --block-space-y: #{$block-space-y-with-sidebar}
 
 .heading + .block, .block-title + .block
     margin-top: var(--heading-margin-bottom)

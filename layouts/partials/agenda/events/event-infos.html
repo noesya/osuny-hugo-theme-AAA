@@ -19,16 +19,16 @@
       </li>
     {{ end }}
   {{ end }}
-  {{ if .Params.events_categories }}
+  {{ if .Params.agenda.events_categories }}
     <li>
-      <span>{{ i18n "events.category" ( len .Params.events_categories ) }}</span>
+      <span>{{ i18n "events.category" ( len .Params.agenda.events_categories ) }}</span>
       {{ partial "commons/categories" ( dict
         "context" .
         "kind" "event"
       )}}
     </li>
   {{ end }}
-  {{ if site.Params.events.share_links.enabled | default site.Params.share_links.enabled }}
+  {{ if site.Params.agenda.events.share_links.enabled | default site.Params.share_links.enabled }}
     <li>
       <span>{{ i18n "events.share" }}</span>
       {{ partial "commons/share.html" . }}

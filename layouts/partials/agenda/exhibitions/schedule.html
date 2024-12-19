@@ -1,0 +1,13 @@
+{{ $dates := .dates }}
+<div class="exhibition-schedule" itemprop="startDate" content="{{- if $dates.from.day -}}{{ $dates.from.day }}{{- end -}}">
+  <p class="exhibition-dates">
+    {{ $formated_date := $dates.computed.two_lines.short }}
+    {{ with site.Params.agenda.exhibitions.date_format }}
+      {{ $formated_date = time.Format . $dates.from.day }}
+      {{ if ne $dates.from.day $dates.to.day }}
+        {{ $formated_date = printf "<span>%s</span><span>%s</span>" $formated_date ( time.Format . $dates.to.day ) }}
+      {{ end }}
+    {{ end }}
+    {{ partial "PrepareHTML" $formated_date }}
+  </p>
+</div>

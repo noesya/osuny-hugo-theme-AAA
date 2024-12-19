@@ -1,0 +1,299 @@
+.events__page
+    .lead
+        @include h3
+        // Safe spacing if post is empty
+    &:not(.full-width)
+        .event-sidebar
+            @include sidebar
+    @include media-breakpoint-up(desktop)
+        .document-content
+            min-height: 600px
+            // Add after element to avoid "min-height" to ignore the last block's margin-bottom
+            &::after
+                content: ''
+                display: block
+                height: 1px
+
+.events__section
+    .exhibitions
+        margin-bottom: $spacing-6
+        h2
+            margin-bottom: var(--heading-margin-bottom)
+    .events-date-title
+        margin-bottom: var(--heading-margin-bottom)
+        &:not(:first-child)
+            margin-top: var(--heading-margin-top)
+    .event
+        &--child
+            margin-left: offset(4)
+    .archive-link
+        @include icon(arrow-right-line, after, true)
+        @include hover-translate-icon(after)
+        display: block
+        text-align: right
+        text-decoration: none
+    @include media-breakpoint-down(desktop)
+        .events
+            margin-bottom: $spacing-4
+        .archive-link
+            text-align: left
+
+.event-infos
+    @include list-reset
+    @include media-breakpoint-up(desktop)
+        font-size: $table-body-size-desktop
+        padding-bottom: $spacing-5
+    .event-date
+        text-transform: capitalize
+    ul
+        @include list-reset
+    > li
+        padding-top: $spacing-2
+        &:not(:last-child)
+            padding-bottom: $spacing-2
+        > span
+            @include meta
+            color: var(--color-text-alt)
+            padding-left: 0
+            display: block
+            white-space: nowrap
+        time + time
+            @include icon(arrow-right-line)
+            &::before
+                padding-right: 0.3rem
+    .events-categories
+        display: flex
+        column-gap: $spacing-1
+        flex-wrap: wrap
+        a
+            @include link(var(--color-accent))
+    .events-actions
+        ul
+            align-items: start
+            display: flex
+            flex-direction: column
+            gap: space(1)
+            padding-bottom: 0
+            margin-top: space(1)
+        a
+            display: block
+            &::after
+                display: none
+    .share
+        a
+            color: inherit
+        li:first-child a
+            padding-left: 0
+
+.event
+    &-title
+        a
+            @include stretched-link
+            text-decoration: none
+    &-subtitle
+        @include h3
+        color: var(--color-text-alt)
+    &-categories
+        @include meta
+        @include list-reset
+        margin-top: $spacing-2
+        display: flex
+        flex-wrap: wrap
+        column-gap: $spacing-1
+        position: relative
+        z-index: 2
+        li:not(:last-child)
+            a::after
+                content: ', '
+    &-schedule
+        p + p
+            margin-top: 0
+    &-dates
+        span + span
+            &::before
+                content: ' — '
+    &-time
+        @include meta
+        span
+            white-space: nowrap
+            + span
+                @include icon(arrow-right-line, before)
+                    margin-left: space()
+                    margin-right: space()
+    .media
+        &:empty
+            display: none
+        img
+            display: block
+    @include media-breakpoint-up(desktop)
+        &-time
+            display: flex
+
+.events
+    &--list
+        .event
+            border-bottom: 1px solid var(--color-border)
+            display: flex
+            flex-direction: column
+            margin-bottom: $spacing-3
+            padding-bottom: $spacing-3
+            position: relative
+            &-title
+                @include h3
+            &-schedule
+                @include h4
+            &-content
+                order: 2
+            @include media-breakpoint-down(desktop)
+                @include media-breakpoint-up(md)
+                    flex-direction: row
+                    gap: $spacing-3
+                    .media
+                        width: columns(4)
+                    &-content
+                        order: 1
+                        width: columns(8)
+            @include media-breakpoint-down(md)
+                .media
+                    max-width: 33%
+                    margin-bottom: $spacing-2
+                &-content
+                    order: 1
+            @include media-breakpoint-up(md)
+                .media
+                    grid-column: 10 / 13
+            @include media-breakpoint-up(desktop)
+                flex-direction: row
+                gap: var(--grid-gutter)
+                align-items: start
+                &-content
+                    > hgroup, > .event-title
+                        margin-bottom: $spacing-2
+                .media
+                    order: 2
+            @include in-page-without-sidebar
+                &-schedule
+                    margin-bottom: $spacing-3
+                &-dates
+                    @include h3
+                    span
+                        display: block
+                        + span
+                            &::before
+                                display: none
+                &-time
+                    margin-top: $spacing-2
+                &-content
+                    @include grid(10, desktop, 0)
+                    order: 1
+                    grid-column: 1 / 11
+                    width: columns(10)
+                    > .event-title, > hgroup, .event-description, .event-categories, .event-status
+                        grid-column: 5 / 11
+                    > .event-schedule
+                        grid-column: 1 / 5
+                        grid-row: 1 / 4
+                .media
+                    width: columns(2)
+            @include in-page-with-sidebar
+                @include grid(8)
+                &-content
+                    order: 1
+                    grid-column: 6 span
+                    margin-top: $spacing-1
+                &-schedule
+                    margin-top: $spacing-1
+                    margin-bottom: $spacing-2
+                &-time
+                    display: inline
+                .media
+                    grid-column: 2 span
+
+    &--grid
+        @include grid(2, md, $spacing-4)
+        .event
+            display: flex
+            flex-direction: column
+            position: relative
+            &-schedule
+                @include meta
+                margin-top: $spacing-2
+            &-content
+                .event-title, hgroup
+                    @include h3
+            &-description
+                margin-top: $spacing-2
+            .media
+                margin-bottom: $spacing-2
+                order: -1
+                img
+                    aspect-ratio: 1
+                    object-fit: cover
+                    width: 100%
+        @include media-breakpoint-down(md)
+            .event
+                + .event
+                    margin-top: $spacing-4
+        @include in-page-without-sidebar
+            @include grid(3, desktop)
+
+    &--large
+        .event
+            display: flex
+            flex-direction: row
+            position: relative
+            gap: var(--grid-gutter)
+            + .event 
+                margin-top: $spacing-5
+            &-content
+                display: flex
+                flex-direction: column
+                .event-description
+                    order: 2
+                .event-description + .event-categories
+                    margin-bottom: $spacing-2
+            &-dates 
+                @include h4
+                margin-top: $spacing-2
+            &-content
+                flex: 1
+                .event-title,
+                .event-subtitle, 
+                hgroup
+                    @include h2
+                .more
+                    @include icon(arrow-right, after)
+                    margin-top: $spacing-3
+                    &::after
+                        margin-left: $spacing-1
+            .media
+                order: -1
+                img
+                    aspect-ratio: 1
+                    object-fit: cover
+                    width: 100%
+            @include media-breakpoint-up(desktop)
+                + .event 
+                    margin-top: var(--grid-gutter)
+                .media
+                    width: columns(4)
+                .event-schedule
+                    margin-bottom: $spacing-4
+            @include media-breakpoint-down(desktop)
+                flex-direction: column
+                .media
+                    margin-left: var(--grid-gutter-negative)
+                    margin-right: var(--grid-gutter-negative)
+            @include in-page-without-sidebar
+                align-items: center
+                .event-dates
+                    @include h3
+                .event-title,
+                .event-subtitle, 
+                hgroup
+                    @include lead
+                .media
+                    width: columns(6)
+                &:not(.event--with-image)
+                    width: columns(5)
+                    margin-left: offset(4)

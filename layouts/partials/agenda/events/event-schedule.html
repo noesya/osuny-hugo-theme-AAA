@@ -7,7 +7,7 @@
       {{ if ne $layout "list" }}
         {{ $formated_date = $dates.computed.short }}
       {{ end }}
-      {{ with site.Params.events.date_format }}
+      {{ with site.Params.agenda.events.date_format }}
         {{ $formated_date = time.Format . $dates.from.day }}
         {{ if ne $dates.from.day $dates.to.day }}
           {{ $formated_date = printf "<span>%s</span><span>%s</span>" $formated_date ( time.Format . $dates.to.day ) }}
@@ -20,14 +20,14 @@
       <p class="event-time">
         {{ with $dates.from.hour }}
           {{- $hour = . -}}
-          {{- with site.Params.events.time_format }}
+          {{- with site.Params.agenda.events.time_format }}
             {{- $hour = time.Format . (printf "2021-09-01T%s:00" $hour) -}}
           {{ end -}}
           <span>{{- $hour -}}</span>
         {{- end -}}
         {{- with $dates.to.hour -}}
           {{- $hour = . -}}
-          {{- with site.Params.events.time_format -}}
+          {{- with site.Params.agenda.events.time_format -}}
             {{- $hour = time.Format . (printf "2021-09-01T%s:00" $hour) -}}
           {{- end -}}
           <span>{{- $hour -}}</span>

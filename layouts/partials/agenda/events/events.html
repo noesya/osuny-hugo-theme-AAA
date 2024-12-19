@@ -1,0 +1,42 @@
+{{ $layout := site.Params.agenda.events.index.layout }}
+{{ $collection := where .Pages "Params.parent" "eq" nil }}
+{{ $is_archive := ne .File.Path "agenda_events/_index.html" }}
+{{ $order := "asc" }}
+
+{{ if $is_archive }}
+  {{ $order = "desc" }}
+{{ else }}
+  {{ $collection = where $collection "Params.dates.archive" false }}
+{{ end }}
+
+{{ if site.Params.agenda.events.index.highlight_exhibitions }}
+  {{ $collection = where $collection "Params.event_kind" "ne" "exposition" }}
+{{ end }}
+
+{{ $groups := $collection.GroupByDate site.Params.agenda.events.index.group_by_date $order }}
+{{ $paginator := .Paginate $groups site.Params.agenda.events.index.per_page }}
+
+{{ if not .Pages }}
+  <p>{{ i18n "events.none" }}</p>
+{{ else }}
+  <div class="events events--{{-  $layout -}}">
+    {{ range $paginator.PageGroups }}
+
+      <h2 class="events-date-title">{{ .Key | humanize }}</h2>
+
+      {{ range .Pages }}
+        {{ partial "agenda/events/event.html" (dict
+            "event" .
+            "layout" $layout
+            "options" site.Params.agenda.events.index.options
+          )}}
+
+        {{ partial "agenda/events/event-children.html" (dict 
+            "event" .
+            "layout" $layout
+            "options" site.Params.agenda.events.index.options
+          )}}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

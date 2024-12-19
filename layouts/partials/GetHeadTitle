@@ -17,13 +17,14 @@
 
 {{/* PAGINATION */}}
 {{ if and (not .IsHome) (eq .Kind "section") }}
-  {{ with .Paginator }}
+  {{/*  TODO : trouver un moyen de récupérer le numéro de page en utilisant .Paginate  */}}
+  {{/*  {{ with .Paginator }}
     {{ if or .HasPrev .HasNext }}
       {{ $page_label := i18n "commons.pagination.title" }}
       {{ $currentPageNumber := .PageNumber }}
       {{ $title = printf "%s %s %s %d" $title $separator $page_label $currentPageNumber }}
     {{ end }}
-  {{ end }}
+  {{ end }}  */}}
 {{ end }}
 
 {{ return $title }}

@@ -1,9 +1,9 @@
-.events__page
+.exhibitions__page
     .lead
         @include h3
         // Safe spacing if post is empty
     &:not(.full-width)
-        .event-sidebar
+        .exhibition-sidebar
             @include sidebar
     @include media-breakpoint-up(desktop)
         .document-content
@@ -14,7 +14,18 @@
                 display: block
                 height: 1px
 
-.events__section
+.exhibitions__section
+    .exhibitions
+        margin-bottom: $spacing-6
+        h2
+            margin-bottom: var(--heading-margin-bottom)
+    .exhibitions-date-title
+        margin-bottom: var(--heading-margin-bottom)
+        &:not(:first-child)
+            margin-top: var(--heading-margin-top)
+    .exhibition
+        &--child
+            margin-left: offset(4)
     .archive-link
         @include icon(arrow-right-line, after, true)
         @include hover-translate-icon(after)
@@ -22,17 +33,17 @@
         text-align: right
         text-decoration: none
     @include media-breakpoint-down(desktop)
-        .events
+        .exhibitions
             margin-bottom: $spacing-4
         .archive-link
             text-align: left
 
-.event-infos
+.exhibition-infos
     @include list-reset
     @include media-breakpoint-up(desktop)
         font-size: $table-body-size-desktop
         padding-bottom: $spacing-5
-    .event-date
+    .exhibition-date
         text-transform: capitalize
     ul
         @include list-reset
@@ -50,13 +61,13 @@
             @include icon(arrow-right-line)
             &::before
                 padding-right: 0.3rem
-    .events-categories
+    .exhibitions-categories
         display: flex
         column-gap: $spacing-1
         flex-wrap: wrap
         a
             @include link(var(--color-accent))
-    .events-actions
+    .exhibitions-actions
         ul
             align-items: start
             display: flex
@@ -74,7 +85,7 @@
         li:first-child a
             padding-left: 0
 
-.event
+.exhibition
     &-title
         a
             @include stretched-link
@@ -118,9 +129,9 @@
         &-time
             display: flex
 
-.events
+.exhibitions
     &--list
-        .event
+        .exhibition
             border-bottom: 1px solid var(--color-border)
             display: flex
             flex-direction: column
@@ -156,7 +167,7 @@
                 gap: var(--grid-gutter)
                 align-items: start
                 &-content
-                    > hgroup, > .event-title
+                    > hgroup, > .exhibition-title
                         margin-bottom: $spacing-2
                 .media
                     order: 2
@@ -177,9 +188,9 @@
                     order: 1
                     grid-column: 1 / 11
                     width: columns(10)
-                    > .event-title, > hgroup, .event-description, .event-categories, .event-status
+                    > .exhibition-title, > hgroup, .exhibition-description, .exhibition-categories, .exhibition-status
                         grid-column: 5 / 11
-                    > .event-schedule
+                    > .exhibition-schedule
                         grid-column: 1 / 5
                         grid-row: 1 / 4
                 .media
@@ -200,7 +211,7 @@
 
     &--grid
         @include grid(2, md, $spacing-4)
-        .event
+        .exhibition
             display: flex
             flex-direction: column
             position: relative
@@ -208,7 +219,7 @@
                 @include meta
                 margin-top: $spacing-2
             &-content
-                .event-title, hgroup
+                .exhibition-title, hgroup
                     @include h3
             &-description
                 margin-top: $spacing-2
@@ -220,34 +231,34 @@
                     object-fit: cover
                     width: 100%
         @include media-breakpoint-down(md)
-            .event
-                + .event
+            .exhibition
+                + .exhibition
                     margin-top: $spacing-4
         @include in-page-without-sidebar
             @include grid(3, desktop)
 
     &--large
-        .event
+        .exhibition
             display: flex
             flex-direction: row
             position: relative
             gap: var(--grid-gutter)
-            + .event 
+            + .exhibition 
                 margin-top: $spacing-5
             &-content
                 display: flex
                 flex-direction: column
-                .event-description
+                .exhibition-description
                     order: 2
-                .event-description + .event-categories
+                .exhibition-description + .exhibition-categories
                     margin-bottom: $spacing-2
             &-dates 
                 @include h4
                 margin-top: $spacing-2
             &-content
                 flex: 1
-                .event-title,
-                .event-subtitle, 
+                .exhibition-title,
+                .exhibition-subtitle, 
                 hgroup
                     @include h2
                 .more
@@ -262,11 +273,11 @@
                     object-fit: cover
                     width: 100%
             @include media-breakpoint-up(desktop)
-                + .event 
+                + .exhibition 
                     margin-top: var(--grid-gutter)
                 .media
                     width: columns(4)
-                .event-schedule
+                .exhibition-schedule
                     margin-bottom: $spacing-4
             @include media-breakpoint-down(desktop)
                 flex-direction: column
@@ -275,14 +286,14 @@
                     margin-right: var(--grid-gutter-negative)
             @include in-page-without-sidebar
                 align-items: center
-                .event-dates
+                .exhibition-dates
                     @include h3
-                .event-title,
-                .event-subtitle, 
+                .exhibition-title,
+                .exhibition-subtitle, 
                 hgroup
                     @include lead
                 .media
                     width: columns(6)
-                &:not(.event--with-image)
+                &:not(.exhibition--with-image)
                     width: columns(5)
                     margin-left: offset(4)

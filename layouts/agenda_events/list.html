@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ partial "agenda/events/hero-list.html" . }}
+  <div class="document-content">
+    {{ partial "commons/list-content.html" . }}
+  
+    {{ partial "agenda/events/summary.html" (dict
+        "with_container" true
+        "context" .
+      ) }}
+  
+    {{ partial "contents/list.html" . }}
+  
+    <div class="container">
+      {{ if site.Params.agenda.events.index.highlight_exhibitions }}
+        {{ partial "agenda/exhibitions/exhibitions.html" }}
+      {{ end }}
+      {{ partial "agenda/events/events.html" . }}
+      {{ partial "agenda/events/archive-link.html" . }}
+      {{ partial "commons/pagination.html" . }}
+    </div>
+  </div>
+{{ end }}

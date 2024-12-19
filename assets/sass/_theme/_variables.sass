@@ -160,7 +160,15 @@
   @include media-breakpoint-up(xxl)
     --grid-gutter: #{$grid-gutter-xxl}
     --grid-gutter-negative: #{-$grid-gutter-xxl}
-
+  
+  // -------------- //
+  //    SPAGINGS    //
+  // ---------------//
+  --block-space-y: #{$block-space-y}
+  @include in-page-without-sidebar
+    --block-space-y: #{$block-space-y-desktop}
+  @include in-page-with-sidebar
+    --block-space-y: #{$block-space-y-with-sidebar}
   // -------------- //
   //     HEADING    //
   // ---------------//

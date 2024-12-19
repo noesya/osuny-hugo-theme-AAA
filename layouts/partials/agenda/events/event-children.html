@@ -1,0 +1,13 @@
+{{ $layout := .layout }}
+{{ $options := .options }}
+
+{{ range .event.Params.children_for_the_day }}
+  {{ $child := site.GetPage .path }}
+  {{ with $child }}
+    {{ partial "agenda/events/event.html" (dict
+        "event" .
+        "layout" $layout
+        "options" site.Params.agenda.events.index.options
+      )}}
+  {{ end }}
+{{ end }}
