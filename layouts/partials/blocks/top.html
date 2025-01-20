@@ -1,6 +1,9 @@
-{{ if .active }}
+{{ $context := .context | default . }}
+{{ $with_description := .with_description | default true }}
+
+{{ if $context.active }}
   <div class="top{{ if .screen_reader_only }} sr-only{{ end }}">
-    {{ with .title }}
+    {{ with $context.title }}
       {{ $heading_tag := partial "GetHeadingTag" (dict 
         "level" .heading 
         "attributes" "class='block-title'"
@@ -15,9 +18,9 @@
         {{- end -}}
       {{ $heading_tag.close }}
     {{ end }}
-    {{ with .description }}
+    {{ if $with_description }}
       <div class="description">
-        {{- partial "PrepareHTML" . -}}
+        {{- partial "PrepareHTML" $context.description -}}
       </div>
     {{ end }}
   </div>
