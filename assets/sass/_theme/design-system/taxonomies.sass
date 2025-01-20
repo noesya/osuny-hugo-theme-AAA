@@ -36,8 +36,12 @@
         margin-top: var(--block-space-y)
 
 .document-content
-    .persons-taxonomies, .organizations-taxonomies, .projects-taxonomies
+    .organizations-taxonomies
+        @include grid(2, desktop)
+    .persons-taxonomies, 
+    .projects-taxonomies
         @include grid(3, desktop)
+    .persons-taxonomies, .organizations-taxonomies, .projects-taxonomies
         @include media-breakpoint-down(desktop)
             margin-top: $spacing-5
             > li + li
