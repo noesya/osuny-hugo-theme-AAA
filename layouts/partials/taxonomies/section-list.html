@@ -2,12 +2,34 @@
 {{ $kind := .Type }}
 {{ $categories_kind := printf "%s_categories" $kind }}
 {{ $categories := index site.Taxonomies $categories_kind  }}
+{{ $categories = where site.Pages "Section" $categories_kind }}
+{{ $taxonomies := where $categories "Params.is_taxonomy" "eq" true }}
 {{ $option := index site.Params $kind }}
 
-{{ if $option.index.taxonomies }}
-  {{- if $categories -}}
-    <ul class="taxonomies-section {{ $kind }}-categories" aria-label="{{ i18n "categories.label" }}">
-      {{- range $categories -}}
+{{ with $option.index.taxonomies }}
+  {{ if $taxonomies }}
+    {{- range $taxonomies -}}
+      <div class="dropdown">
+        <button aria-controls="categories-{{ .Title | anchorize }}" aria-expanded="false">
+          {{ .Title }}
+        </button>
+        <div class="taxonomy dropdown-menu" id="categories-{{ .Title | anchorize }}">
+          <ul>
+            {{ range .Params.children }}
+              {{ $category := site.GetPage .path }}
+              {{ with $category }}
+                <li>
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    {{- end -}}
+  {{- else -}}
+    <ul class="taxonomies-section {{ .kind }}-categories" aria-label="{{ i18n "categories.label" }}">
+      {{- range .categories -}}
         {{ with .Page }}
           <li>
             <a href="{{ .Permalink }}">
