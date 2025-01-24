@@ -399,6 +399,9 @@ publications:
     label: publications
 sitemap:
   pages: Arborescence
+taxonomies:
+  list:
+    title: Trier par
 volumes:
   abstract: Abstract
   paper:

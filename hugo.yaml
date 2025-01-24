@@ -257,7 +257,8 @@ params:
         summary: true
         year: false
         subtitle: true
-      taxonomies: false
+      taxonomies:
+        extendable: true
       truncate_description: 200 # Set to 0 to disable truncate
     # share_links: # Optional
     #   enabled: true

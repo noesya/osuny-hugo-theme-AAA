@@ -1,4 +1,4 @@
-@mixin dropdown
+@mixin dropdown($content: ".dropdown-menu")
     @include meta
     position: relative
     button, span[role="button"]
@@ -11,9 +11,9 @@
         // When dropdown expanded
         &[aria-expanded="true"]
             @include icon(arrow-up-s-line, after)
-            + .dropdown-menu
+            + #{$content}
                 display: block
-    .dropdown-menu
+    #{$content}
         @include list-reset
         top: calc(100% + #{$spacing-2})
         left: 0

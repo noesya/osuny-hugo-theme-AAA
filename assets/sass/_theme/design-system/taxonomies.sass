@@ -21,6 +21,21 @@
                 display: inline-block
                 margin-left: $spacing-1
 
+.taxonomies-list
+    align-items: baseline
+    column-gap: $spacing-3
+    display: flex
+    margin-bottom: var(--grid-gutter)
+    margin-top: var(--grid-gutter)
+    .dropdown
+        @include dropdown(".taxonomy-categories")
+    .taxonomy-categories
+        min-width: max-content
+        ul
+            @include list-reset
+
+
+
 .taxonomies-single
     &, ul
         @include list-reset
