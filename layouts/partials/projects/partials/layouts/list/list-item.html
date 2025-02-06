@@ -1,0 +1,40 @@
+{{- $title := partial "PrepareHTML" .project.Title -}}
+{{ $project := .project }}
+{{ $heading := .heading }}
+{{ $options := .options }}
+
+<article class="project" itemscope itemtype="https://schema.org/CreativeWork">
+  <div class="project-content">
+    <div class="project-description">
+      
+      {{ partial "projects/partials/projet/heading.html" (dict
+          "title" $title
+          "heading" $heading
+          "subtitle" $project.Params.subtitle
+          "options" $options
+        ) }}
+
+      {{ if and $options.summary }}
+        {{ with $project.Params.summary }}
+          {{ partial "projects/partials/projet/summary.html" (dict "summary" . ) }}
+        {{ end }} 
+      {{ end }}
+      {{ if or $options.year $options.categories }}
+        <div class="project-meta">
+          {{ if and $options.year }}
+            {{ with $project.Params.year }}
+              {{ partial "projects/partials/projet/year.html" . }}
+            {{ end }}
+          {{ end }}
+              
+          {{ if $options.categories }}
+            {{ partial "projects/partials/projet/categories.html" . }}
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ if $options.image }}
+    {{ partial "projects/partials/projet/media.html" ( dict "image" $project.Params.image ) }}
+  {{ end }}
+</article>

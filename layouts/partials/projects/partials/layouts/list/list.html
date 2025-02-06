@@ -1,23 +1,15 @@
 {{ $heading_level := .heading_level | default 3 }}
 {{ $heading := printf "h%d" $heading_level }}
-
-{{/*  NOT USED YET  */}}
 {{ $options := .options | default site.Params.projects.index.options }}
 
 <div class="list">
   {{ range $project := .projects -}}
     {{ with site.GetPage .path }}
-      {{ $heading_tag := partial "GetHeadingTag" (dict
-          "level" $heading_level
-          "attributes" "class='project-title' itemprop='name'"
-        )}}
-      <article class="project" itemscope itemtype="https://schema.org/CreativeWork">
-        {{- $title := partial "PrepareHTML" .Title -}}
-
-        {{ $heading_tag.open }}
-          <a href="{{ .Permalink }}" itemprop="url" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" $title)) }}">{{ $title }}</a>
-        {{ $heading_tag.close }}
-      </article>
+      {{ partial "projects/partials/layouts/list/list-item.html" (dict
+          "project" .
+          "options" $options
+          "heading" $heading
+        ) }}
     {{ end }}
   {{ end }}
 </div>

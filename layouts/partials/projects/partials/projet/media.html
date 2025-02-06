@@ -1,0 +1,11 @@
+<div class="media">
+  {{- if .image -}}
+    {{- partial "commons/image.html"
+        (dict
+          "image"    .image
+          "sizes"    site.Params.image_sizes.blocks.projects.large
+        ) -}}
+  {{- else -}}
+    {{- partial "commons/image-default.html" "projects" -}}
+  {{- end -}}
+</div>

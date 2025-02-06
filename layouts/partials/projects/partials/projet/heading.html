@@ -1,0 +1,19 @@
+{{ $heading_tag := (dict 
+  "open" ((printf "<%s class='project-title' itemprop='name'>" .heading) | safeHTML)
+  "close" ((printf "</%s>" .heading) | safeHTML)
+) }}
+
+{{ if and .options.subtitle .subtitle }}
+  <hgroup>
+{{ end }}
+
+{{ $heading_tag.open }}
+  <a href="{{ .Permalink }}" itemprop="url" title="{{ safeHTML (i18n "commons.more_aria" (dict "Title" .title)) }}">{{ .title }}</a>
+{{ $heading_tag.close }}
+{{ if and .options.subtitle .subtitle }}
+  <p class="project-subtitle">{{ partial "PrepareHTML" .subtitle }}</p>
+{{ end }}
+
+{{ if and .options.subtitle .subtitle }}
+  </hgroup>
+{{ end }}
