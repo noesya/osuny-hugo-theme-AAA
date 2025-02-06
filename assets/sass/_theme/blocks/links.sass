@@ -46,9 +46,10 @@
             background-color: $block-links-card-hover-background
             &, a
                 color: $block-links-card-hover-color
-            .is-png,
+            .is-png
+                filter: $block-links-png-hover-filter
             .is-svg
-                filter: $block-links-hover-filter
+                filter: $block-links-svg-hover-filter
     @include in-page-without-sidebar
         .top
             display: flex
