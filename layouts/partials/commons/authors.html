@@ -1,0 +1,14 @@
+{{ if .Params.authors }}
+  <li class="authors">
+    <span>{{ i18n "commons.authors" (len .Params.authors) }}</span>
+    <ul>
+      {{- range .GetTerms "authors" -}}
+        <li>
+          <a href="{{ .Permalink }}" itemprop="url">
+            <span itemprop="name">{{- safeHTML .Params.person -}}</span>
+          </a>
+        </li>
+      {{- end -}}
+    </ul>
+  </li>
+{{ end }}

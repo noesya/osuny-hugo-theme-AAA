@@ -9,50 +9,50 @@
 <ul class="share">
   {{ if $share_options.facebook }}
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-facebook-fill" title="{{ i18n "posts.share_aria" (dict "Title" "Facebook") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Facebook") }}</span>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-facebook-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "Facebook") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Facebook") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.linkedin }}
     <li>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-linkedin-fill" title="{{ i18n "posts.share_aria" (dict "Title" "Linkedin") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Linkedin") }}</span>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-linkedin-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "Linkedin") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Linkedin") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.mastodon }}
     <li>
-      <a href="https://mastodonshare.com/?text={{ .Title }}&url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-mastodon-fill" title="{{ i18n "posts.share_aria" (dict "Title" "Mastodon") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Mastodon") }}</span>
+      <a href="https://mastodonshare.com/?text={{ .Title }}&url={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-mastodon-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "Mastodon") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Mastodon") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.twitter }}
     <li>
-      <a href="https://twitter.com/intent/tweet?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-twitter-x-line" title="{{ i18n "posts.share_aria" (dict "Title" "Twitter") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Twitter") }}</span>
+      <a href="https://twitter.com/intent/tweet?text={{ .Title }} {{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-twitter-x-line" title="{{ i18n "commons.share_on_aria" (dict "Title" "Twitter") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Twitter") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.whatsapp }}
     <li>
-      <a href="https://api.whatsapp.com/send?text={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-whatsapp-fill" title="{{ i18n "posts.share_aria" (dict "Title" "Whatsapp") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Whatsapp") }}</span>
+      <a href="https://api.whatsapp.com/send?text={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-whatsapp-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "Whatsapp") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Whatsapp") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.telegram }}
     <li>
-      <a href="https://t.me/share/url?url={{ .Permalink | absURL }}&text={{ .Title }}" target="_blank" rel="noopener" class="icon icon-telegram-fill" title="{{ i18n "posts.share_aria" (dict "Title" "Telegram") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "Telegram") }}</span>
+      <a href="https://t.me/share/url?url={{ .Permalink | absURL }}&text={{ .Title }}" target="_blank" rel="noopener" class="icon icon-telegram-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "Telegram") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "Telegram") }}</span>
       </a>
     </li>
   {{ end }}
   {{ if $share_options.email }}
     <li>
-      <a href="mailto:?subject={{ .Title }}&body={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-mail-fill" title="{{ i18n "posts.share_aria" (dict "Title" "E-mail") }}">
-        <span class="sr-only">{{ i18n "posts.share_aria" (dict "Title" "E-mail") }}</span>
+      <a href="mailto:?subject={{ .Title }}&body={{ .Permalink | absURL }}" target="_blank" rel="noopener" class="icon icon-mail-fill" title="{{ i18n "commons.share_on_aria" (dict "Title" "E-mail") }}">
+        <span class="sr-only">{{ i18n "commons.share_on_aria" (dict "Title" "E-mail") }}</span>
       </a>
     </li>
   {{ end }}

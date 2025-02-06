@@ -99,6 +99,9 @@ commons:
     transcription: Transcription
     map_transcription : Données textuelles
     credits: "Droits réservés : "
+  authors:
+    one: Auteur•ice
+    other: Auteur·rices
   search:
     label: Recherche
     title: Rechercher
@@ -215,6 +218,8 @@ commons:
   read: Lire
   read_online: Lire en ligne
   share: Partager
+  share_on: Partager sur
+  share_on_aria: Partager sur “{{ .Title }}” - lien externe
   slider:
     default_title: Carrousel
     goto: Aller à l'élément
@@ -343,8 +348,6 @@ posts:
   see_all: Voir toutes les actualités
   see_all_in_program: Voir toutes les actualités de la formation
   see_all_in_category: Voir toutes les actualités “{{ .Title }}”
-  share: Partager sur
-  share_aria: Partager sur “{{ .Title }}” - lien externe
   title: Actualités
 projects:
   author: Auteur·rice
@@ -362,8 +365,6 @@ projects:
   see_all: Voir toutes les projets
   see_all_in_program: Voir toutes les projets de la formation
   see_all_in_category: Voir toutes les projets “{{ .Title }}”
-  share: Partager sur
-  share_aria: Partager sur “{{ .Title }}” - lien externe
   title: Projets
   year: Année
 programs:

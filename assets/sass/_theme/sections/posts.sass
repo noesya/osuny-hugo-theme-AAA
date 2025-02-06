@@ -18,7 +18,7 @@
 
 .posts__section,
 .authors__term,
-.posts_categories__term,
+// .posts_categories__term,
 .persons__page
     .posts--list
         article
@@ -143,68 +143,7 @@
                 margin-bottom: $spacing-5
 
 .post-infos
-    @include meta
-    @include list-reset
-    font-size: $table-body-size
-    margin-bottom: 0
-    @include media-breakpoint-up(desktop)
-        font-size: $table-body-size-desktop
-    > li, 
-    .taxonomies-single > li
-        @include meta
-        display: flex
-        gap: $spacing-3
-        justify-content: space-between
-        padding-top: $spacing-2
-        padding-bottom: $spacing-2
-        border-color: var(--color-border)
-        &:not(:first-child)
-            border-top: 1px solid var(--color-border)
-        > span
-            @include meta
-            color: var(--color-text-alt)
-            padding-left: 0
-            white-space: nowrap
-            vertical-align: top
-        .share
-            text-align: right
-            flex: 1
-        &.authors,
-        &.terms
-            margin: 0
-            ul
-                text-align: right
-            li
-                display: inline-block
-                vertical-align: middle
-                margin-left: $spacing-1
-                &:last-child
-                    &::after
-                        content: none
-            @include media-breakpoint-up(desktop)
-                align-items: baseline
-                li
-                    display: block
-                    + li
-                        margin-top: space()
-
-    .taxonomies-single
-        flex: 1
-        li:last-child
-            padding-bottom: 0
-    a
-        @include link(var(--color-accent))
-        text-align: right
-    .share
-        display: flex
-        flex-wrap: wrap
-        justify-content: end
-        margin-right: -$spacing-2
-        li
-            display: inline-block
-        a
-            color: inherit
-            text-decoration: none
+    @include sidebar-infos
 
 .related
     margin-top: $spacing-3

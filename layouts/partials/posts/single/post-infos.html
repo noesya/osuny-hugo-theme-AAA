@@ -4,38 +4,17 @@
       {{ partial "taxonomies/single-list.html" . }}
     </li>
   {{ end }}
+
   <li>
     <span>{{ i18n "posts.date" }}</span>
     <time datetime="{{ .Date.Format "2006-01-02T15:04" }}">{{ .Date | time.Format site.Params.posts.date_format }}</time>
   </li>
-  {{ if .Params.authors }}
-    {{ $authors_label := "posts.authors.label" }}
-    {{ if eq (len .Params.authors) 1 }}
-      {{ $authors_label = "posts.author" }}
-    {{ end }}
-    <li class="authors">
-      <span>{{ i18n $authors_label }}</span>
-      <ul>
-        {{- range .GetTerms "authors" -}}
-          <li>
-            <a href="{{ .Permalink }}" itemprop="url">
-              <span itemprop="name">{{- safeHTML .Params.person -}}</span>
-            </a>
-          </li>
-        {{- end -}}
-      </ul>
-    </li>
-  {{ end}}
-  {{ with .Params.contents_reading_time }}
-    <li class="reading-time">
-      <span>{{ i18n "posts.reading_time" }}</span>
-      {{ .text }}
-    </li>
-  {{ end }}
+
+  {{ partial "commons/authors.html" . }}
+
+  {{ partial "commons/reading-time.html" . }}
+
   {{ if site.Params.posts.share_links.enabled | default site.Params.share_links.enabled }}
-    <li class="social-share">
-      <span>{{ i18n "posts.share" }}</span>
-      {{ partial "commons/share/links.html" . }}
-    </li>
+    {{ partial "commons/share/sidebar-item.html" . }}
   {{ end }}
 </ul>

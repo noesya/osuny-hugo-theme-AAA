@@ -4,8 +4,10 @@
   <meta itemprop="name" content="{{ partial "PrepareHTML" .Title }}">
   <meta itemprop="url" content="{{ .Permalink }}">
   {{ with .Params.summary }}<meta itemprop="description" content="{{ . | safeHTML }}">{{ end }}
-  
-  {{ if .Params.taxonomies }}
+
+  {{ partial "projects/single/sidebar.html" . }}
+
+  {{ if and .Params.design.full_width .Params.taxonomies }}
     <div class="container taxonomies-container">
       {{ partial "taxonomies/single-list.html" . }}
     </div>

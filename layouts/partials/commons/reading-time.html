@@ -1,0 +1,6 @@
+{{ with .Params.contents_reading_time }}
+  <li class="reading-time">
+    <span>{{ i18n "posts.reading_time" }}</span>
+    {{ .text }}
+  </li>
+{{ end }}

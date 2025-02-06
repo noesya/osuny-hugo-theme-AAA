@@ -1,0 +1,13 @@
+{{ if .Params.design.full_width }}
+  {{ with .Params.year }}
+    <div class="project-infos">
+      <div class="year">
+        <time datetime="{{ . }}">{{ . }}</time>
+      </div>
+    </div>
+  {{ end }}
+
+  {{ if site.Params.projects.share_links.enabled | default site.Params.share_links.enabled }}
+    {{ partial "commons/share/dropdown.html" . }}
+  {{ end }}
+{{ end }}

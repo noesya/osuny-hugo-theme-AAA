@@ -1,13 +1,23 @@
-{{ if or .Params.projects_categories .Params.year }}
-  <div class="project-infos">
-    {{ with .Params.year }}
-      <div class="year">
-        <time datetime="{{ . }}">{{ . }}</time>
-      </div>
-    {{ end }}
-  </div>
-{{ end }}
 
-{{ if site.Params.projects.share_links.enabled | default site.Params.share_links.enabled }}
-  {{ partial "commons/share/dropdown.html" . }}
-{{ end }}
+<ul class="project-infos">
+  {{ if .Params.projects_categories }}
+    <li>
+      {{ partial "taxonomies/single-list.html" . }}
+    </li>
+  {{ end }}
+
+  {{ with .Params.year }}
+    <li class="year">
+      <span>{{ i18n "projects.year" }}</span>
+      <time datetime="{{ . }}">{{ . }}</time>
+    </li>
+  {{ end }}
+
+  {{ partial "commons/authors.html" . }}
+
+  {{ partial "commons/reading-time.html" . }}
+
+  {{ if site.Params.projects.share_links.enabled | default site.Params.share_links.enabled }}
+    {{ partial "commons/share/sidebar-item.html" . }}
+  {{ end }}
+</ul>

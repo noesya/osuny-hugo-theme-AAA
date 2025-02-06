@@ -88,6 +88,12 @@
             button
                 margin-top: 0
                 width: columns(6)
+    
+    &:not(.full-width)
+        .project-sidebar
+            @include sidebar
+            .project-infos
+                @include sidebar-infos
     @include media-breakpoint-up(sm)
         .hero
             .project-infos
